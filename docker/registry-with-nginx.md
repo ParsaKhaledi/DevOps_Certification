@@ -32,7 +32,7 @@ http {
 
   server {
     listen 443 ssl;
-    server_name repo.MeCan.ir;
+    server_name repo.Parsa.ir;
 
     # SSL
     ssl_certificate /etc/nginx/conf.d/cert.pem;
@@ -75,7 +75,7 @@ http {
   }
   server {
       listen 80;
-      server_name repo.MeCan.ir;
+      server_name repo.Parsa.ir;
       return 301 https://$host$request_uri;
   }
 }
@@ -99,7 +99,7 @@ CERT_LOCATION=./auth/
 openssl req -x509 -nodes -newkey \
 rsa:4096 -days 365 \
 -keyout $CERT_LOCATION/key.pem \
--subj "/C=IR/ST=Iran/L=Tehran/O=MeCan/OU=IT/CN=MeCan.ir/emailAddress=rafiee1001@gmail.com" \
+-subj "/C=IR/ST=Iran/L=Tehran/O=Parsa/OU=IT/CN=Parsa.ir/emailAddress=pa.aerospace@gmail.com" \
 -out $CERT_LOCATION/cert.pem 
 
 # cehck certificate
@@ -171,7 +171,7 @@ docker-compose logs -f
 vim /etc/systemd/system/docker.service.d/override.conf
 [Service]
 ExecStart=
-ExecStart=/usr/bin/dockerd --insecure-registry https://repo.MeCan.ir
+ExecStart=/usr/bin/dockerd --insecure-registry https://repo.Parsa.ir
 
 # systemd reload and restart docker
 systemctl daemon-reload
@@ -184,15 +184,15 @@ docker info | grep -A1 "Insecure Registries:"
 
 ### login to registry
 ```bash
-docker login https://repo.MeCan.ir -u ahmad -p DevOps_training_with_DockerMe
+docker login https://repo.Parsa.ir -u ahmad -p DevOps_training_with_DockerMe
 ```
 
 ### Image Tag and Push to local Registry
 ```bash
 # tag image
-docker tag nginx:alpine repo.MeCan.ir/nginx:alpine
+docker tag nginx:alpine repo.Parsa.ir/nginx:alpine
 # push image
-docker push repo.MeCan.ir/nginx:alpine
+docker push repo.Parsa.ir/nginx:alpine
 # check repository
-curl -u "ahmad:DevOps_training_with_DockerMe" -k https://repo.MeCan.ir/v2/_catalog
+curl -u "ahmad:DevOps_training_with_DockerMe" -k https://repo.Parsa.ir/v2/_catalog
 ```
